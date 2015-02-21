@@ -97,6 +97,9 @@ g byte lowsecondMale = (h2q3 == 1) & (h2q8>15) & (educ == 5)
 g byte upsecondMale = (h2q3 == 1) & (h2q8>15) & (educ == 6)
 g byte tertMale = (h2q3 == 1) & (h2q8>15) & (educ == 8)
 
+* Merge with administrative variables
+merge 1:1 HHID using "$pathin/UNPS_Geovars_1112.dta"
+
 * Collapse everything down to HH-level using max values for all vars
 * Copy variable labels to reapply after collapse
 include "$pathdo/copylabels.do"
