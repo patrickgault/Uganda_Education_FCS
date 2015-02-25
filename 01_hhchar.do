@@ -13,10 +13,8 @@ clear
 capture log close
 log using "$pathlog/01_hhchar.log", replace
 
-
-* Load household survey module of all individuals.
-use "$pathin/GSEC2.dta", clear
-sort HHID PID
+* Merge education data to household roster using the force command
+merge 1:1 HHID PID using "$pathin/GSEC4.dta", force
 
 /* Demographic list to calculate
 1. Head of Household Sex
