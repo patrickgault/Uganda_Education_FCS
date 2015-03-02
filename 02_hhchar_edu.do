@@ -11,13 +11,13 @@
 
 clear
 capture log close
-log using "/Users/patrickgault/Documents/Documents/Academic/GWU/Spring 2015/Uganda/Log/01_hhchar_educ",replace
+log using "$pathout/01_hhchar_educ",replace
 
 *Load HH Roster, GSEC2.dta
-use "/Users/patrickgault/Documents/Documents/Academic/GWU/Spring 2015/Uganda/Datain/GSEC2.dta",clear
+use "$pathin/GSEC2.dta",clear
 
 * Merge education data to household roster using the force command
-merge 1:1 HHID PID using "/Users/patrickgault/Documents/Documents/Academic/GWU/Spring 2015/Uganda/Datain/GSEC4.dta", force
+merge 1:1 HHID PID using "$pathin/GSEC4.dta", force
 
 **********************************
 *Head of Household Characteristics
@@ -327,14 +327,13 @@ order HHID
 
 
 * Save
-save "/Users/patrickgault/Documents/Documents/Academic/GWU/Spring 2015/Uganda/Stata/hhchar_edu.dta", replace
+save "$pathout/hhchar_edu.dta", replace
 
 * Keep a master file of only household id's for missing var checks
 keep HHID
-save "/Users/patrickgault/Documents/Documents/Academic/GWU/Spring 2015/Uganda/Stata/hhid.dta", replace
+save "$pathout/hhid.dta", replace
 
 
 * Create an html file of the log for internet sharability
-log2html "/Users/patrickgault/Documents/Documents/Academic/GWU/Spring 2015/Uganda/Log/01_hhchar_educ", replace
+log2html "$pathout/01_hhchar_educ", replace
 log close
-
